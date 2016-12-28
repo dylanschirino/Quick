@@ -68,8 +68,8 @@ gulp.task( "reset-db", function( fNext ){
     }
 
     fDataParser = function( oElt ){
+      // Comme il n'y a pas d'id existant on en crée un soit même !
       oElt._id = new ObjectID();
-
       if ( oElt.quick && oElt.quick._id ) {
         oElt.quick = new ObjectID( oElt.quick._id );
       }
