@@ -8,9 +8,13 @@
  import { Router } from "express";
 
  import list from "../controllers/quicks/list";
+ import details from "../controllers/quicks/details";
+ import create from "../controllers/quicks/create";
 
  let oRouter = new Router();
 
  oRouter.get( "/quicks", list );
+ oRouter.get( "/quicks/:id", details );
+ oRouter.post( "/quicks", create );
 
  export default oRouter;
