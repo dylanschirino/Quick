@@ -54,7 +54,8 @@
          let aCleanQuicks,
              aQuickToReset = [];
 
-         aCleanQuicks = aQuicks.map( ( { _id, name, slug, address, latitude, longitude} ) => {
+         aCleanQuicks = aQuicks.map( ( { _id, name, slug, address, latitude, longitude } ) => {
+
              aQuickToReset.push( _id );
 
              return {
