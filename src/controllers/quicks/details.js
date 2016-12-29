@@ -1,6 +1,6 @@
 /* Dylan/Quick
  *
- * /src/controllers/quicks/list.js - Quick listing
+ * /src/controllers/quicks/Details.js - Quick Details
  *
  * coded by Dylan Schirino
  * started at 29/12/2016
