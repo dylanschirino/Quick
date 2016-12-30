@@ -106,26 +106,26 @@ gulp.task( "reset-db", function( fNext ){
 
 } );
 
-// gulp.task( "modules", function(){
-//     browserify( "static/modules/main.js" )
-//         .transform( babelify, {
-//           "presets": [ "es2015" ],
-//         } )
-//         .bundle()
-//         .pipe( sourceStream( "app.js" ) )
-//         .pipe( gulp.dest( "static/js/" ) )
-//         .pipe( buffer() )
-//         .pipe( gRename( "app.min.js" ) )
-//         .pipe( gUglify().on( "error", console.log ) )
-//         .pipe( gulp.dest( "static/js" ));
-// } );
+gulp.task( "modules", function(){
+    browserify( "static/modules/main.js" )
+        .transform( babelify, {
+          "presets": [ "es2015" ],
+        } )
+        .bundle()
+        .pipe( sourceStream( "app.js" ) )
+        .pipe( gulp.dest( "static/js/" ) )
+        .pipe( buffer() )
+        .pipe( gRename( "app.min.js" ) )
+        .pipe( gUglify().on( "error", console.log ) )
+        .pipe( gulp.dest( "static/js" ));
+} );
 
 gulp.task( "watch", function() {
     gulp.watch( "src/**/*.js", [ "build" ] );
     gulp.watch( "src/views/**", [ "views" ] );
-    // gulp.watch( "static/modules/**/*.js", [ "modules" ] );
+    gulp.watch( "static/modules/**/*.js", [ "modules" ] );
 } );
 
-gulp.task( "default", [ "build","views","watch"] );// don't forget to add "modules"
+gulp.task( "default", [ "build","views","watch","modules"] );// don't forget to add "modules"
 
 gulp.task( "work", [ "default", "watch" ] );
