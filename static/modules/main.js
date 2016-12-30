@@ -12,14 +12,14 @@ import VueRouter from "vue-router";
 Vue.use( VueRouter );
 
 import QuickList from "./components/quicks/list";
-// import QuickDetails from "./components/quicks/details";
+import QuickDetails from "./components/quicks/details";
 
 let oRouter, oApp;
 
 oRouter = new VueRouter( {
     "routes": [
     { "path": "/", "component": QuickList },
-    //  { "path": "/:id", "component": QuickDetails },
+    { "path": "/:id", "component": QuickDetails },
     ],
 } );
 
