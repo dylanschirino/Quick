@@ -17,10 +17,10 @@ Vue.use( VueRouter );
 let oRouter, oApp;
 
 oRouter = new VueRouter( {
-   "routes": [
+    "routes": [
     //  { "path": "/", "component": QuickList },
     //  { "path": "/:id", "component": QuickDetails },
-   ],
+    ],
 } );
 
 oApp = new Vue( {
