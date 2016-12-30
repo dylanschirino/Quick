@@ -54,12 +54,33 @@
          let aCleanQuicks,
              aQuickToReset = [];
 
-         aCleanQuicks = aQuicks.map( ( { _id, name, slug, address, latitude, longitude } ) => {
+         aCleanQuicks = aQuicks.map( ( { _id, name, slug, address, latitude, longitude, open,hours } ) => {
 
              aQuickToReset.push( _id );
 
+             let date = new Date(),
+             CurrentHours = date.getHours(), // On recupere la date d'aujourd'hui et on en extrait l'heure mais l'heure du serveur est GMT:0 donc on fait +1 pour que ca soit juste.
+             CurrentDay = date.getDay(),
+             OpenHours = hours[ CurrentDay ][ 0 ],
+             CloseHours = hours[ CurrentDay ][ 1 ]; // On recupere le jour de la semaine
+
+         if ( CurrentDay ) {
+           // Si l'heure courante est supérieur à l'heure d'ouverture et l'heure de fermeture a l'heure courante
+             if ( CurrentHours >= OpenHours && CurrentHours <= CloseHours ) {
+                 open = true;
+             }
+             // Si l'heure courante est supérieur à l'heure d'ouverture et inférieur à 24h
+             else if ( CurrentHours >= OpenHours && CurrentHours <= 23 ) {
+                 open = true;
+             }
+             // Si l'heure courante est inférieur à l'heure d'ouverture et l'heure de fermeture est inférieur à l'heure courante
+             else if ( CurrentHours <= OpenHours && CurrentHours <= CloseHours ) {
+                 open = true;
+             }
+         }
              return {
                  "id": _id,
+                 "open":!!open,
                  "distance": distance( oCurrentPosition, { latitude, longitude } ) * 1000, name, slug, latitude, longitude, address,
              };
          } );
