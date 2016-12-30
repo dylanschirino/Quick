@@ -57,7 +57,7 @@ let oQuickList = Vue.component( "quick-list", {
                 "data": {
                     "latitude": coords.latitude,
                     "longitude": coords.longitude,
-                    "radius": 10,
+                    "radius": 10,// Y a pas de quick pres de chez moi !
                 },
                 "success": this.ajaxSuccess,
                 "error": this.showError,
