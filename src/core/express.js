@@ -12,6 +12,7 @@ import mitanEko from "mitan-eko";
 import zouti from "zouti";
 import systemRoutes from "../routes/system";
 import quicksRoutes from "../routes/quicks";
+import pagesRoutes from "../routes/pages";
 
 let oApp,
     fInit;
@@ -32,9 +33,16 @@ fInit = function( iAppPort = APP_PORT ) {
         "extended": true,
     } ) );
 
+    oApp.use( express.static( `${ __dirname }/../../static` ) );
+
+    // configure templates
+    oApp.set( "views", `${ __dirname }/../views` );
+    oApp.set( "view engine", "pug" );
+
     // Routes
     oApp.use( systemRoutes );
     oApp.use( quicksRoutes );
+    oApp.use( pagesRoutes );
 
     // Listening on port
     oApp.listen( iAppPort, () => {
