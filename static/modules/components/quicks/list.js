@@ -57,14 +57,13 @@ let oQuickList = Vue.component( "quick-list", {
                 "data": {
                     "latitude": coords.latitude,
                     "longitude": coords.longitude,
-                    "radius": 10,// Y a pas de quick pres de chez moi !
+                    "radius": 10, // Y a pas de quick pres de chez moi !
                 },
                 "success": this.ajaxSuccess,
                 "error": this.showError,
             } );
         },
         ajaxSuccess( oResponse ) {
-            console.log( "response:", oResponse );
             this.loaded = true;
             this.quicks = oResponse.data;
         },
