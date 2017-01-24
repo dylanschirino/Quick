@@ -49,7 +49,7 @@
      checkQuick( sQuickID )
         .then( fCreateQuick )
         .then( () => {
-          // Tout est ok
+          // Tout est ok donc on peut envoyer les données
             send( oRequest, oResponse, {
                 "id": oQuick._id,
                 "slug": oQuick.slug || null,
