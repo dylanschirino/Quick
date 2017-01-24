@@ -27,7 +27,7 @@ oApp = new Vue( {
     "template": `
         <div class="wrapper">
             <header>
-                <h1>Quick Application</h1>
+                <h1 style="text-align:center; margin:1em auto;">Quick Application</h1>
             </header>
             <main>
                 <router-view></router-view>
