@@ -1,6 +1,6 @@
 /* Dylan/Quick
  *
- * /Static/modules/controllers/Details.js- Details.js
+ * /Static/modules/components/Details.js- Details.js
  *
  * coded by Dylan Schirino
  * started at 30/12/2016

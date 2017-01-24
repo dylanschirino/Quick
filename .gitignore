@@ -9,5 +9,4 @@ jspm_packages
 .node_repl_history
 bin
 .vagrant
-static/css
 static/js
