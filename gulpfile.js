@@ -85,9 +85,9 @@ gulp.task( "reset-db", function( fNext ){
 
     oDB.dropDatabase()
       .then( function(){
-        // 3. Parse & Fill Banks
+        // 3. Parse & Fill Quick
         var aQuick = require( __dirname + "/_dev/export.json" );
-        //Map : ca prend chaque élément dessus, on fait le traitement et ca nous retourne un nouveau tableau avec les valeurs modifié
+        // Map : ca prend chaque élément dessus, on fait le traitement et ca nous retourne un nouveau tableau avec les valeurs modifié
         return oDB.collection( "quick" ).insertMany( aQuick.map( fDataParser ) );
 
       } )
