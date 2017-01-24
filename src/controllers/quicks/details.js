@@ -47,14 +47,12 @@
             // Si l'heure courante est supérieur à l'heure d'ouverture et l'heure de fermeture a l'heure courante
               if ( CurrentHours >= OpenHours && CurrentHours <= CloseHours ) {
                   open = true;
-              }
-              // Si l'heure courante est supérieur à l'heure d'ouverture et inférieur à 24h
-              else if ( CurrentHours >= OpenHours && CurrentHours <= 24 ) {
+              } else if ( CurrentHours >= OpenHours && CurrentHours <= 24 ) {
                   open = true;
-              }
-              // Si l'heure courante est inférieur à l'heure d'ouverture et l'heure de fermeture est inférieur à l'heure courante
-              else if ( CurrentHours <= OpenHours && CurrentHours <= CloseHours ) {
+                  // Si l'heure courante est supérieur à l'heure d'ouverture et inférieur à 24h
+              } else if ( CurrentHours <= OpenHours && CurrentHours <= CloseHours ) {
                   open = true;
+                  // Si l'heure courante est inférieur à l'heure d'ouverture et l'heure de fermeture est inférieur à l'heure courante
               }
           }
           oCleanQuick = {
