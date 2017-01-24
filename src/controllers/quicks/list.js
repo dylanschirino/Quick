@@ -12,7 +12,7 @@
 
  const ARC_KILOMETER = 0.0092529, // 1 décimal de lat/long vaut X km
      DEFAULT_RADIUS = 1,
-     MAX_RADIUS = 10;
+     MAX_RADIUS = 5;
 
  export default function( oRequest, oResponse ) {
      // Verification de la position de l'utilisateur
