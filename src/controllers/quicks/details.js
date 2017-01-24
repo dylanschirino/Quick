@@ -37,20 +37,20 @@
 
           let { _id, slug, name, latitude, longitude, address, hours, open } = oQuick,
               oCleanQuick,
-              date = new Date(),
-              CurrentHours = date.getHours(), // On recupere la date d'aujourd'hui et on en extrait l'heure mais l'heure du serveur est GMT:0 donc on fait +1 pour que ca soit juste.
-              CurrentDay = date.getDay(),
-              OpenHours = hours[ CurrentDay ][ 0 ],
-              CloseHours = hours[ CurrentDay ][ 1 ]; // On recupere le jour de la semaine
+              sDate = new Date(),
+              iCurrentHours = sDate.getHours(), // On recupere la date d'aujourd'hui et on en extrait l'heure mais l'heure du serveur est GMT:0 donc on fait +1 pour que ca soit juste.
+              iCurrentDay = sDate.getDay(),
+              iOpenHours = hours[ iCurrentDay ][ 0 ],
+              iCloseHours = hours[ iCurrentDay ][ 1 ]; // On recupere le jour de la semaine
 
-          if ( CurrentDay ) {
+          if ( iCurrentDay ) {
             // Si l'heure courante est supérieur à l'heure d'ouverture et l'heure de fermeture a l'heure courante
-              if ( CurrentHours >= OpenHours && CurrentHours <= CloseHours ) {
+              if ( iCurrentHours >= iOpenHours && iCurrentHours <= iCloseHours ) {
                   open = true;
-              } else if ( CurrentHours >= OpenHours && CurrentHours <= 24 ) {
+              } else if ( iCurrentHours >= iOpenHours && iCurrentHours <= 24 ) {
                   open = true;
                   // Si l'heure courante est supérieur à l'heure d'ouverture et inférieur à 24h
-              } else if ( CurrentHours <= OpenHours && CurrentHours <= CloseHours ) {
+              } else if ( iCurrentHours <= iOpenHours && iCurrentHours <= iCloseHours ) {
                   open = true;
                   // Si l'heure courante est inférieur à l'heure d'ouverture et l'heure de fermeture est inférieur à l'heure courante
               }
