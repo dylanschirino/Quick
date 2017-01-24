@@ -24,7 +24,7 @@ fInit = function( iAppPort = APP_PORT ) {
     }
     oApp = express();
 
-    // Configure middlewares
+    // Configure middlewares( small softwares components )
 
     oApp.use( mitanEko( "quick" ) );
     oApp.use( responseTime() );
