@@ -11,6 +11,7 @@ import Promise from "bluebird";
 
 let fCheckQuick;
 
+// Une vérification pour vérifier qu'on à bien un ID dans les quick ( mieux vaut être prudent )
 fCheckQuick = function( sQuickID ) {
     let oQuickID;
 
