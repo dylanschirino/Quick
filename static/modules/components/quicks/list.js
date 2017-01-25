@@ -33,6 +33,7 @@ let oQuickList = Vue.component( "quick-list", {
           <router-link class="list-group-item" :to="'/' + elt.id">
             <h3 class="list-group-item-heading"> {{ elt.name ? elt.name : "Unknown" }} </h3>
             <p class="list-group-item-text"">{{elt.address}}</p>
+            <p class="list-group-item-text"">Distance : {{elt.distance}}m</p>
             <p class="open list-group-item-text" v-if="elt.open == true">Actuellement Ouvert</p>
             <p class="close" v-else="elt.open == false"> Fermé </p>
             </div>
