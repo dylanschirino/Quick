@@ -59,7 +59,7 @@
              aQuickToReset.push( _id );
 
              let sDate = new Date(),
-                 iCurrentHours = sDate.getHours(), // On recupere la date d'aujourd'hui et on en extrait l'heure mais l'heure du serveur est GMT:0 donc on fait +1 pour que ca soit juste.
+                 iCurrentHours = sDate.getHours(), // On recupere la date d'aujourd'hui et on en extrait l'heure
                  iCurrentDay = sDate.getDay(),
                  iOpenHours = hours[ iCurrentDay ][ 0 ],
                  iCloseHours = hours[ iCurrentDay ][ 1 ]; // On recupere le jour de la semaine
