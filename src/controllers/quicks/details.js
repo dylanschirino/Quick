@@ -22,7 +22,7 @@
          error( oRequest, oResponse, "Invalid ID!!", 400 );
      }
 
-     oCurrentPosition = checkPosition( iLatitude, iLongitude ); // On check la position de l'utilisateur
+     oCurrentPosition = checkPosition( oRequest.query.latitude, +oRequest.query.longitude ); // On check la position de l'utilisateur
 
      getQuicks()
       .findOne( {
@@ -58,7 +58,7 @@
           oCleanQuick = {
               "id": _id,
               "open": !!open,
-              slug, name, latitude, longitude, address, hours,
+              slug, name, latitude, longitude, address, hours, distance,
           };
           if ( oCurrentPosition ) {
               oCleanQuick.distance = distance( oCurrentPosition, oCleanQuick ) * 1000;

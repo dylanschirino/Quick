@@ -7,6 +7,7 @@
  */
 import Vue from "vue";
 import reqwest from "reqwest";
+const GEO_OPTIONS = { "enableHighAccuracy": true };
 
 let QuickDetails = Vue.component( "quick-details", {
     "data": function() {
@@ -34,6 +35,7 @@ let QuickDetails = Vue.component( "quick-details", {
           <p class="list-group-item-text">{{quicks.address}}</p>
           <p class="list-group-item-text">Latitude : {{quicks.latitude}}</p>
           <p class="list-group-item-text">Longitude : {{quicks.longitude}}</p>
+          <p class="list-group-item-text">Distance : {{quicks.distance}}m</p>
           <p class="open list-group-item-text" v-if="quicks.open == true">Actuellement Ouvert</p>
           <br>
           <table class="table table-striped">
@@ -88,19 +90,35 @@ let QuickDetails = Vue.component( "quick-details", {
     </div>
     `,
     mounted() {
-        reqwest( {
-            "url": `/quicks/${ this.$route.params.id }`,
-            "method": "get",
-            "data": {},
-            "error": ( oError ) => {
-                this.loaded = true;
-                this.error = oError.message;
-            },
-            "success": ( oResponse ) => {
-                this.loaded = true;
-                this.quicks = oResponse.data;
-            },
-        } );
+        this.updateQuicks();
+    },
+    "methods": {
+        updateQuicks() {
+        // 1. Get user position avec jeolok pour récuperer la position actuelle de l'user
+            navigator.geolocation.getCurrentPosition( this.geoSucces, this.showError, GEO_OPTIONS );
+        },
+        geoSucces( { coords } ) {
+        // 2. Get quicks at position
+            reqwest( {
+                "url": `/quicks/${ this.$route.params.id }`,
+                "method": "get",
+                "data": {
+                    "latitude": coords.latitude,
+                    "longitude": coords.longitude,
+                    "radius": 10, // Y a pas de quick pres de chez moi !
+                },
+                "success": this.ajaxSuccess,
+                "error": this.showError,
+            } );
+        },
+        ajaxSuccess( oResponse ) {
+            this.loaded = true;
+            this.quicks = oResponse.data;
+        },
+        showError( oError ) {
+            this.loaded = true;
+            this.error = oError;
+        },
     },
 } );
 
